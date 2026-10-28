@@ -24,7 +24,6 @@ export default function App() {
             lede="Thirteen home purifiers, from everyday wall-mounted ROs to smart IoT models with app alerts and a longer warranty."
             products={residentialProducts}
             tone="plain"
-            waveClass="fill-foam"
           />
         </SectionBoundary>
         <SectionBoundary>
@@ -35,7 +34,6 @@ export default function App() {
             lede="Offices, clinics, schools, and institutions. Elixir 1 and Elixir 2 are UV+UF purifiers for low-TDS water — the rest of this range is commercial RO."
             products={commercialProducts}
             tone="tinted"
-            waveClass="fill-white"
           />
         </SectionBoundary>
         <SectionBoundary>

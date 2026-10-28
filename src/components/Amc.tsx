@@ -1,5 +1,4 @@
 import { CalendarClock } from "lucide-react";
-import { WaveDivider } from "@/components/WaveDivider";
 import { WhatsAppLink } from "@/components/WhatsAppLink";
 
 const PLANS = [
@@ -19,7 +18,7 @@ const PLANS = [
 
 export function Amc() {
   return (
-    <section id="amc" className="bg-white">
+    <section id="amc" className="bg-mist">
       <div className="mx-auto max-w-7xl px-4 py-16 md:px-6 md:py-20">
         <div className="max-w-2xl">
           <p className="text-sm font-semibold tracking-[0.14em] text-brand-deep uppercase">Service</p>
@@ -37,7 +36,7 @@ export function Amc() {
           {PLANS.map((plan) => (
             <article
               key={plan.name}
-              className="flex flex-col rounded-3xl bg-mist p-6 ring-1 ring-navy/5 md:p-8"
+              className="flex flex-col rounded-3xl bg-white p-6 ring-1 ring-navy/5 md:p-8"
             >
               <div className="flex size-12 items-center justify-center rounded-2xl bg-white text-brand-deep ring-1 ring-navy/5">
                 <CalendarClock className="size-5" aria-hidden="true" />
@@ -53,7 +52,6 @@ export function Amc() {
           ))}
         </div>
       </div>
-      <WaveDivider fillClass="fill-mist" />
     </section>
   );
 }

@@ -1,7 +1,6 @@
 import { Clock, Phone } from "lucide-react";
 import type { ComponentType, SVGProps } from "react";
 import { FacebookIcon, InstagramIcon, WhatsAppIcon } from "@/components/icons";
-import { WaveDivider } from "@/components/WaveDivider";
 import { WhatsAppLink } from "@/components/WhatsAppLink";
 import {
   FACEBOOK_URL,
@@ -58,7 +57,7 @@ const CHANNELS: {
 
 export function Contact() {
   return (
-    <section id="contact" className="bg-mist">
+    <section id="contact" className="bg-white">
       <div className="mx-auto max-w-7xl px-4 py-16 md:px-6 md:py-20">
         <div className="max-w-2xl">
           <p className="text-sm font-semibold tracking-[0.14em] text-brand-deep uppercase">Contact</p>
@@ -113,7 +112,6 @@ export function Contact() {
           />
         </div>
       </div>
-      <WaveDivider fillClass="fill-navy" />
     </section>
   );
 }

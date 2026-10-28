@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import { ProductCard } from "@/components/ProductCard";
-import { WaveDivider } from "@/components/WaveDivider";
 import { WhatsAppLink } from "@/components/WhatsAppLink";
 import type { Product } from "@/data/products";
 
@@ -11,7 +10,6 @@ export function ProductSection({
   lede,
   products,
   tone,
-  waveClass,
 }: {
   id: string;
   eyebrow: string;
@@ -19,7 +17,6 @@ export function ProductSection({
   lede: string;
   products: Product[];
   tone: "plain" | "tinted";
-  waveClass: string;
 }) {
   return (
     <section id={id} className={tone === "tinted" ? "bg-foam" : "bg-white"}>
@@ -33,13 +30,12 @@ export function ProductSection({
           <EmptyCatalog>{lede}</EmptyCatalog>
         ) : (
           <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {products.map((product, index) => (
-              <ProductCard key={product.name} product={product} index={index} />
+            {products.map((product) => (
+              <ProductCard key={product.name} product={product} />
             ))}
           </div>
         )}
       </div>
-      <WaveDivider fillClass={waveClass} />
     </section>
   );
 }

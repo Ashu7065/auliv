@@ -51,7 +51,13 @@ function checkPrices(rows, expected, label) {
     assert(row?.name === name, `${label}[${index}] name ${row?.name} !== ${name}`);
     assert(row?.price === price, `${name} price ${row?.price} !== ${price}`);
     assert(row?.mrp === mrp, `${name} MRP ${row?.mrp} !== ${mrp}`);
-    assert(typeof row?.description === "string" && row.description.length > 40, `${name} description`);
+    assert(
+      typeof row?.description === "string" &&
+        row.description.length > 40 &&
+        row.description.length <= 110 &&
+        !row.description.includes("\n"),
+      `${name} should have a single short description`,
+    );
     assert(!("product_url" in (row ?? {})), `${name} should not ship a source URL`);
     assert(!("source_model" in (row ?? {})), `${name} should not ship a source model`);
   });
@@ -115,6 +121,26 @@ const amc = readFileSync(path.join(root, "src/components/Amc.tsx"), "utf8");
 for (const needle of ["New", "Half-yearly", "Yearly", "Coming soon", "Ask about AMC"]) {
   assert(amc.includes(needle), `AMC missing ${needle}`);
 }
+
+const hero = readFileSync(path.join(root, "src/components/Hero.tsx"), "utf8");
+for (const needle of [
+  "For Indian homes",
+  "Safe drinking water for a healthy life",
+  "Free installation · Mon–Sat support",
+  "View products",
+  "hero-morning-sapphire.jpg",
+]) {
+  assert(hero.includes(needle), `hero missing ${needle}`);
+}
+assert(!hero.includes("ProductArt"), "hero should not use the illustrated placeholder");
+assert(!hero.includes("grid-cols-2"), "hero should not include the feature-tile grid");
+
+const card = readFileSync(path.join(root, "src/components/ProductCard.tsx"), "utf8");
+assert(!card.includes("ProductArt"), "product cards should not use illustrated placeholders");
+assert(card.includes("object-contain"), "product cards should contain the studio photo");
+
+const contactUi = readFileSync(path.join(root, "src/components/Contact.tsx"), "utf8");
+assert(contactUi.includes("Follow on Facebook"), "contact should keep a clear Facebook label");
 
 function walk(dir, acc = []) {
   for (const name of readdirSync(dir)) {
