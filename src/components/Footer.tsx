@@ -9,11 +9,11 @@ import {
 } from "@/lib/contact";
 
 const LINKS = [
-  { href: "#home", label: "Home" },
-  { href: "#residential", label: "Residential" },
-  { href: "#commercial", label: "Commercial" },
-  { href: "#amc", label: "AMC" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#home", label: "Home" },
+  { href: "/#residential", label: "Residential" },
+  { href: "/#commercial", label: "Commercial" },
+  { href: "/#amc", label: "AMC" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 const YEAR = new Date().getFullYear();

@@ -23,7 +23,7 @@ export function Hero() {
               className="w-full sm:w-auto"
             />
             <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
-              <a href="#residential">
+              <a href="/#residential">
                 View products
                 <ArrowRight />
               </a>

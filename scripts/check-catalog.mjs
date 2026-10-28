@@ -142,6 +142,25 @@ assert(card.includes("object-contain"), "product cards should contain the studio
 const contactUi = readFileSync(path.join(root, "src/components/Contact.tsx"), "utf8");
 assert(contactUi.includes("Follow on Facebook"), "contact should keep a clear Facebook label");
 
+const app = readFileSync(path.join(root, "src/App.tsx"), "utf8");
+assert(app.includes("residentialPreviewCount"), "home residential section should use the preview count");
+assert(app.includes("commercialPreviewCount"), "home commercial section should use the preview count");
+assert(app.includes('exploreHref="/residential"'), "residential explore link");
+assert(app.includes('exploreHref="/commercial"'), "commercial explore link");
+assert(app.includes('path === "/residential"'), "residential listing route");
+assert(app.includes('path === "/commercial"'), "commercial listing route");
+
+const productsSource = readFileSync(path.join(root, "src/data/products.ts"), "utf8");
+assert(productsSource.includes("residentialPreviewCount = 8"), "residential preview should be 8");
+assert(productsSource.includes("commercialPreviewCount = 6"), "commercial preview should be 6");
+
+const carousel = readFileSync(path.join(root, "src/components/ProductCarousel.tsx"), "utf8");
+assert(carousel.includes("snap-x"), "carousel should use CSS scroll snap");
+assert(carousel.includes("Explore more") === false, "explore CTA stays with the section");
+
+const section = readFileSync(path.join(root, "src/components/ProductSection.tsx"), "utf8");
+assert(section.includes("Explore more"), "product sections need an Explore more link");
+
 function walk(dir, acc = []) {
   for (const name of readdirSync(dir)) {
     if (name === "node_modules" || name === "dist") continue;

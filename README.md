@@ -1,6 +1,6 @@
 # Auliv Purifiers
 
-Single-page marketing site for Auliv water purifiers. People browse residential and commercial models, then start a WhatsApp chat. There is no cart, checkout, or account.
+Marketing site for Auliv water purifiers. The home page previews each range in a carousel. `/residential` and `/commercial` list every model. People enquire on WhatsApp. There is no cart, checkout, or account.
 
 ## Run locally
 
@@ -20,7 +20,8 @@ npm run preview
 
 ## What’s on the page
 
-- Home hero, Residential ROs (13), Commercial purifiers (8), AMC, Contact
+- Home hero, residential carousel (8 of 13), commercial carousel (6 of 8), AMC, Contact
+- Full listings at `/residential` and `/commercial`
 - Hero: morning kitchen with the Auliv Sapphire, WhatsApp, and one trust line
 - Soft cyan wave under the hero only; commercial and AMC use alternating soft washes
 - Prices and MRP from the product catalogs

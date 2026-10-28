@@ -2,10 +2,16 @@ import { useEffect, useState } from "react";
 
 const SECTION_IDS = ["home", "residential", "commercial", "amc", "contact"] as const;
 
+function onHomePage() {
+  return (window.location.pathname.replace(/\/+$/, "") || "/") === "/";
+}
+
 export function useActiveSection() {
-  const [active, setActive] = useState<string>("home");
+  const [active, setActive] = useState<string>(() => (onHomePage() ? "home" : ""));
 
   useEffect(() => {
+    if (!onHomePage()) return;
+
     const update = () => {
       const marker = window.scrollY + 130;
       let current: string = SECTION_IDS[0];

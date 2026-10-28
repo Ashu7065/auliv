@@ -18,6 +18,8 @@ const HEADER_MESSAGE = "Hi, I'm interested in Auliv purifiers";
 
 export function Header() {
   const active = useActiveSection();
+  const path = window.location.pathname.replace(/\/+$/, "") || "/";
+  const isCurrent = (id: string) => path === `/${id}` || (path === "/" && active === id);
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -45,7 +47,7 @@ export function Header() {
       )}
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center gap-3 px-4 md:h-24 md:px-6">
-        <a href="#home" className="shrink-0 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2">
+        <a href="/#home" className="shrink-0 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2">
           <img
             src="/auliv-logo-header.png"
             alt="Auliv Water Purifiers"
@@ -59,11 +61,11 @@ export function Header() {
           {LINKS.map((link) => (
             <a
               key={link.id}
-              href={`#${link.id}`}
-              aria-current={active === link.id ? "true" : undefined}
+              href={`/#${link.id}`}
+              aria-current={isCurrent(link.id) ? "true" : undefined}
               className={cn(
                 "rounded-full px-3 py-2 text-sm font-medium text-navy/75 transition-colors hover:bg-mist hover:text-navy",
-                active === link.id && "bg-foam text-navy",
+                isCurrent(link.id) && "bg-foam text-navy",
               )}
             >
               {link.label}
@@ -105,12 +107,12 @@ export function Header() {
             {LINKS.map((link) => (
               <a
                 key={link.id}
-                href={`#${link.id}`}
-                aria-current={active === link.id ? "true" : undefined}
+                href={`/#${link.id}`}
+                aria-current={isCurrent(link.id) ? "true" : undefined}
                 onClick={() => setOpen(false)}
                 className={cn(
                   "rounded-2xl px-3 py-3 text-base font-medium text-navy hover:bg-mist",
-                  active === link.id && "bg-foam",
+                  isCurrent(link.id) && "bg-foam",
                 )}
               >
                 {link.label}

@@ -37,6 +37,10 @@ export type Product = {
 export const residentialProducts = residential as Product[];
 export const commercialProducts = commercial as Product[];
 
+/** Landing carousels show a short set. Full catalogs live on the category pages. */
+export const residentialPreviewCount = 8;
+export const commercialPreviewCount = 6;
+
 const ACCENTS = ["#00C2E8", "#0099C4", "#12A8C4", "#00B4D4", "#1A9BB8", "#00A3C2"];
 
 export function accentFor(index: number) {
