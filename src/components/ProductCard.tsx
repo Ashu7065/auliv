@@ -6,10 +6,13 @@ import { formatInr } from "@/lib/contact";
 export function ProductCard({ product, index }: { product: Product; index: number }) {
   const photo = productPhoto(product.name);
   const accent = accentFor(index);
+  const frameClass = photo
+    ? "relative aspect-square bg-white"
+    : "relative aspect-[5/4] bg-gradient-to-b from-mist to-white";
 
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-3xl bg-white shadow-[0_16px_40px_-28px_rgba(10,37,64,0.55)] ring-1 ring-navy/5 transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_22px_44px_-24px_rgba(10,37,64,0.45)] motion-reduce:transform-none motion-reduce:transition-none">
-      <div className="relative aspect-[5/4] bg-gradient-to-b from-mist to-white">
+      <div className={frameClass}>
         {product.badge && (
           <span className="absolute top-3 left-3 z-10 rounded-full bg-brand px-2.5 py-1 text-xs font-semibold tracking-wide text-navy">
             {product.badge}
@@ -19,7 +22,11 @@ export function ProductCard({ product, index }: { product: Product; index: numbe
           <img
             src={photo}
             alt={`${product.name} water purifier`}
-            className="h-full w-full object-contain p-4"
+            width={1024}
+            height={1024}
+            loading="lazy"
+            decoding="async"
+            className="h-full w-full object-contain"
           />
         ) : (
           <ProductArt

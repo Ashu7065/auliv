@@ -32,9 +32,9 @@ WhatsApp links use `https://wa.me/918368879809` with a prefilled message that na
 
 ## Product images
 
-Cards use illustrated placeholders. Do not hotlink another brand’s photos.
+Each residential and commercial card shows a white-background studio photo from `src/assets/products/`. The file name is the model name (`auliv_name`) as a slug: lowercase, with spaces and punctuation as hyphens. `Auliv Grand Plus` uses `auliv-grand-plus.png`. `productPhoto()` in `src/data/products.ts` resolves that file, and the card renders it with `object-contain` on a white background.
 
-When white-background studio shots arrive, add a file under `src/assets/products/` named with the model slug, for example `auliv-grand-plus.webp`. The card swaps the illustration for that file automatically. Slugs are the model name in lowercase, with spaces as hyphens.
+Do not hotlink another brand’s photos. If a slug has no file, the card falls back to the illustrated silhouette.
 
 ## Stack
 

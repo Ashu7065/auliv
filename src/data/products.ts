@@ -55,9 +55,16 @@ export function productSlug(name: string) {
     .replace(/(^-|-$)/g, "");
 }
 
-/** Real white-background shots replace the illustration when a file is added. */
+const PHOTO_EXTENSIONS = ["png", "jpg", "jpeg", "webp", "avif"] as const;
+
+/**
+ * Studio photo for a catalog model. The file name is the Auliv product name
+ * (auliv_name) as a slug, for example "Auliv Grand Plus" → auliv-grand-plus.png.
+ */
 export function productPhoto(name: string) {
   const slug = productSlug(name);
-  const match = Object.entries(photoModules).find(([file]) => file.includes(`/${slug}.`));
+  const match = Object.entries(photoModules).find(([file]) =>
+    PHOTO_EXTENSIONS.some((extension) => file.endsWith(`/${slug}.${extension}`)),
+  );
   return match?.[1];
 }

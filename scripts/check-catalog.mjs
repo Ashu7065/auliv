@@ -69,6 +69,21 @@ assert(
 );
 assert(residential.every((row) => row.badge == null), "residential cards have no badge");
 
+function productSlug(name) {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
+const photoDir = path.join(root, "src/assets/products");
+const photoFiles = new Set(readdirSync(photoDir).filter((name) => name.endsWith(".png")));
+for (const row of [...residential, ...commercial]) {
+  const file = `${productSlug(row.name)}.png`;
+  assert(photoFiles.has(file), `${row.name} is missing studio photo ${file}`);
+}
+assert(photoFiles.size === residential.length + commercial.length, `expected 21 product photos, found ${photoFiles.size}`);
+
 const uploadResidential = "uploads/auliv-catalog_0549.json";
 const uploadCommercial = "uploads/auliv-commercial-catalog_90d0.json";
 if (existsSync(path.join(root, uploadResidential)) && existsSync(path.join(root, uploadCommercial))) {
