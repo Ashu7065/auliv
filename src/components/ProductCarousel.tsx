@@ -39,7 +39,7 @@ export function ProductCarousel({ products, label }: { products: Product[]; labe
           aria-label={`Previous ${label}`}
           disabled={index === 0}
           onClick={() => scrollToIndex(index - 1)}
-          className="inline-flex size-11 items-center justify-center rounded-full border border-navy/15 bg-white text-navy transition-colors hover:bg-mist disabled:pointer-events-none disabled:opacity-35"
+          className="inline-flex size-11 items-center justify-center rounded-full border border-navy/15 bg-white text-navy transition-colors hover:border-brand hover:bg-brand hover:text-navy disabled:pointer-events-none disabled:opacity-35"
         >
           <ChevronLeft className="size-5" aria-hidden="true" />
         </button>
@@ -48,7 +48,7 @@ export function ProductCarousel({ products, label }: { products: Product[]; labe
           aria-label={`Next ${label}`}
           disabled={atEnd || index >= products.length - 1}
           onClick={() => scrollToIndex(index + 1)}
-          className="inline-flex size-11 items-center justify-center rounded-full border border-navy/15 bg-white text-navy transition-colors hover:bg-mist disabled:pointer-events-none disabled:opacity-35"
+          className="inline-flex size-11 items-center justify-center rounded-full border border-navy/15 bg-white text-navy transition-colors hover:border-brand hover:bg-brand hover:text-navy disabled:pointer-events-none disabled:opacity-35"
         >
           <ChevronRight className="size-5" aria-hidden="true" />
         </button>
@@ -82,7 +82,7 @@ export function ProductCarousel({ products, label }: { products: Product[]; labe
             onClick={() => scrollToIndex(dot)}
             className={cn(
               "size-2.5 rounded-full transition-colors",
-              dot === index ? "bg-brand-deep" : "bg-navy/20 hover:bg-navy/35",
+              dot === index ? "bg-brand" : "bg-navy/20 hover:bg-brand/50",
             )}
           />
         ))}

@@ -41,6 +41,15 @@ export const commercialProducts = commercial as Product[];
 export const residentialPreviewCount = 8;
 export const commercialPreviewCount = 6;
 
+const commercialWithoutUv = commercialProducts.filter((product) => product.badge !== "UV+UF");
+const elixirPreview = commercialProducts.find((product) => product.name === "Auliv Elixir 2");
+const commercialFeatured = commercialWithoutUv.slice(0, commercialPreviewCount - 1);
+
+/** Six commercial models, with Elixir 2 in view so the UV+UF badge appears on the home carousel. */
+export const commercialPreviewProducts = elixirPreview
+  ? [...commercialFeatured.slice(0, 2), elixirPreview, ...commercialFeatured.slice(2)]
+  : commercialFeatured;
+
 const ACCENTS = ["#00C2E8", "#0099C4", "#12A8C4", "#00B4D4", "#1A9BB8", "#00A3C2"];
 
 export function accentFor(index: number) {

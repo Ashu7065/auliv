@@ -144,7 +144,7 @@ assert(contactUi.includes("Follow on Facebook"), "contact should keep a clear Fa
 
 const app = readFileSync(path.join(root, "src/App.tsx"), "utf8");
 assert(app.includes("residentialPreviewCount"), "home residential section should use the preview count");
-assert(app.includes("commercialPreviewCount"), "home commercial section should use the preview count");
+assert(app.includes("commercialPreviewProducts"), "home commercial section should use the preview set");
 assert(app.includes('exploreHref="/residential"'), "residential explore link");
 assert(app.includes('exploreHref="/commercial"'), "commercial explore link");
 assert(app.includes('path === "/residential"'), "residential listing route");
@@ -153,6 +153,7 @@ assert(app.includes('path === "/commercial"'), "commercial listing route");
 const productsSource = readFileSync(path.join(root, "src/data/products.ts"), "utf8");
 assert(productsSource.includes("residentialPreviewCount = 8"), "residential preview should be 8");
 assert(productsSource.includes("commercialPreviewCount = 6"), "commercial preview should be 6");
+assert(productsSource.includes('product.name === "Auliv Elixir 2"'), "commercial preview should include Elixir 2");
 
 const carousel = readFileSync(path.join(root, "src/components/ProductCarousel.tsx"), "utf8");
 assert(carousel.includes("snap-x"), "carousel should use CSS scroll snap");

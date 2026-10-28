@@ -8,7 +8,7 @@ import { Hero } from "@/components/Hero";
 import { ProductSection } from "@/components/ProductSection";
 import { SectionBoundary } from "@/components/SectionBoundary";
 import {
-  commercialPreviewCount,
+  commercialPreviewProducts,
   commercialProducts,
   residentialPreviewCount,
   residentialProducts,
@@ -79,7 +79,7 @@ export default function App() {
                 eyebrow="For workplaces"
                 title="Commercial purifiers"
                 lede="Offices, clinics, schools, and institutions. Elixir 1 and Elixir 2 are UV+UF purifiers for low-TDS water — the rest of this range is commercial RO."
-                products={commercialProducts.slice(0, commercialPreviewCount)}
+                products={commercialPreviewProducts}
                 tone="tinted"
                 exploreHref="/commercial"
               />
