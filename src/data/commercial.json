@@ -1,0 +1,68 @@
+[
+  {
+    "name": "Auliv Elite Star",
+    "price": 45600,
+    "mrp": 60500,
+    "description": "Commercial RO+UV+UF purifier with TDS control, built for offices and shops that need safe drinking water all day. Keeps healthy minerals while removing germs and dissolved impurities.",
+    "category": "commercial",
+    "art": "commercial"
+  },
+  {
+    "name": "Auliv Perk Star",
+    "price": 89999,
+    "mrp": 125000,
+    "description": "Hot, cold and normal water from one unit with built-in RO purification and a digital display. Ideal for busy offices, clinics and waiting areas.",
+    "category": "commercial",
+    "art": "dispenser"
+  },
+  {
+    "name": "Auliv Perk",
+    "price": 58799,
+    "mrp": 69999,
+    "description": "High-output RO+UF purifier with TDS control, delivering around 20 litres per hour for workplaces and canteens. Retains essential minerals for better-tasting water.",
+    "category": "commercial",
+    "art": "commercial"
+  },
+  {
+    "name": "Auliv Elite Plus",
+    "price": 45599,
+    "mrp": 55500,
+    "description": "Reliable commercial RO+UV+UF purifier with mineral retention, suited to small offices, schools and shops. Clean, safe water with minimal upkeep.",
+    "category": "commercial",
+    "art": "commercial"
+  },
+  {
+    "name": "Auliv Elite 2 Plus",
+    "price": 82799,
+    "mrp": 99999,
+    "description": "Heavy-duty RO+UV+UF commercial purifier for larger teams and institutions with high daily demand. Removes impurities while keeping natural minerals intact.",
+    "category": "commercial",
+    "art": "commercial"
+  },
+  {
+    "name": "Auliv Galaxy",
+    "price": 62500,
+    "mrp": 68500,
+    "description": "Large-capacity RO+UF purifier with TDS control for factories, hostels and institutions. Steady supply of pure, mineral-rich water through the day.",
+    "category": "commercial",
+    "art": "commercial"
+  },
+  {
+    "name": "Auliv Elixir 2",
+    "price": 29000,
+    "mrp": 30000,
+    "description": "Stainless steel UV+UF purifier for areas with low-TDS water, like municipal supply. Kills germs and cysts, with auto-flushing for easy maintenance.",
+    "category": "commercial",
+    "art": "elixir-steel",
+    "badge": "UV+UF"
+  },
+  {
+    "name": "Auliv Elixir 1",
+    "price": 18500,
+    "mrp": 22000,
+    "description": "Budget-friendly UV+UF commercial purifier in a sturdy ABS body, ideal for low-TDS water. Germ-free water with auto-flushing to keep it running smoothly.",
+    "category": "commercial",
+    "art": "elixir-abs",
+    "badge": "UV+UF"
+  }
+]
