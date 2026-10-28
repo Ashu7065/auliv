@@ -5,7 +5,7 @@
     "mrp": 60500,
     "description": "Commercial RO+UV+UF purifier with TDS control, built for offices and shops that need safe drinking water all day. Keeps healthy minerals while removing germs and dissolved impurities.",
     "category": "commercial",
-    "art": "commercial"
+    "art": "elite"
   },
   {
     "name": "Auliv Perk Star",
@@ -21,7 +21,7 @@
     "mrp": 69999,
     "description": "High-output RO+UF purifier with TDS control, delivering around 20 litres per hour for workplaces and canteens. Retains essential minerals for better-tasting water.",
     "category": "commercial",
-    "art": "commercial"
+    "art": "perk"
   },
   {
     "name": "Auliv Elite Plus",
@@ -29,7 +29,7 @@
     "mrp": 55500,
     "description": "Reliable commercial RO+UV+UF purifier with mineral retention, suited to small offices, schools and shops. Clean, safe water with minimal upkeep.",
     "category": "commercial",
-    "art": "commercial"
+    "art": "elite-plus"
   },
   {
     "name": "Auliv Elite 2 Plus",
@@ -37,7 +37,7 @@
     "mrp": 99999,
     "description": "Heavy-duty RO+UV+UF commercial purifier for larger teams and institutions with high daily demand. Removes impurities while keeping natural minerals intact.",
     "category": "commercial",
-    "art": "commercial"
+    "art": "elite-heavy"
   },
   {
     "name": "Auliv Galaxy",
@@ -45,7 +45,7 @@
     "mrp": 68500,
     "description": "Large-capacity RO+UF purifier with TDS control for factories, hostels and institutions. Steady supply of pure, mineral-rich water through the day.",
     "category": "commercial",
-    "art": "commercial"
+    "art": "galaxy"
   },
   {
     "name": "Auliv Elixir 2",

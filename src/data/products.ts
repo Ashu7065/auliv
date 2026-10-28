@@ -2,9 +2,24 @@ import commercial from "./commercial.json" with { type: "json" };
 import residential from "./residential.json" with { type: "json" };
 
 export type ArtKind =
-  | "residential"
-  | "iot"
-  | "commercial"
+  | "iot-supreme-2y"
+  | "iot-ace-2y"
+  | "iot-supreme"
+  | "iot-ace"
+  | "new-grand"
+  | "grand"
+  | "grand-plus"
+  | "sapphire"
+  | "crown"
+  | "elegant"
+  | "supreme"
+  | "ace"
+  | "marvel"
+  | "elite"
+  | "elite-plus"
+  | "elite-heavy"
+  | "galaxy"
+  | "perk"
   | "dispenser"
   | "elixir-steel"
   | "elixir-abs";

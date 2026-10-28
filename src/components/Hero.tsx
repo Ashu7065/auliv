@@ -28,19 +28,18 @@ export function Hero() {
         />
       </svg>
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 pb-8 pt-10 md:px-6 md:pt-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8 lg:pb-4">
+      <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-4 pb-6 pt-8 md:px-6 md:pt-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-6 lg:pb-2">
         <div>
           <p className="text-sm font-semibold tracking-[0.16em] text-brand-deep uppercase">
             Auliv Purifiers
           </p>
-          <h1 className="mt-3 max-w-xl text-4xl font-semibold tracking-tight text-navy sm:text-5xl lg:text-6xl lg:leading-[1.05]">
+          <h1 className="mt-3 max-w-xl text-5xl font-semibold tracking-tight text-navy sm:text-6xl lg:text-7xl lg:leading-[0.96]">
             Safe drinking water for a <span className="text-brand-deep">healthy life</span>
           </h1>
-          <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">
-            RO purification your family can trust — mineral-balanced water for the home, and
-            commercial purifiers for the places you work.
+          <p className="mt-4 max-w-lg text-lg leading-snug text-muted">
+            RO purification your family can trust, at home and at work.
           </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <WhatsAppLink message="Hi, I'm interested in Auliv purifiers" size="lg" className="w-full sm:w-auto" />
             <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
               <a href="#residential">
@@ -49,13 +48,22 @@ export function Hero() {
               </a>
             </Button>
           </div>
+          <ul className="mt-8 grid grid-cols-2 gap-3">
+            {FEATURES.map((feature) => (
+              <li key={feature.title} className="rounded-2xl bg-white/80 p-3.5 ring-1 ring-navy/5">
+                <feature.icon className="size-5 text-brand-deep" aria-hidden="true" />
+                <p className="mt-2 text-sm font-semibold text-navy">{feature.title}</p>
+                <p className="mt-1 text-sm leading-snug text-muted">{feature.text}</p>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div className="relative mx-auto w-full max-w-md lg:max-w-none">
           <div className="absolute inset-8 rounded-full bg-brand/20 blur-2xl" aria-hidden="true" />
           <div className="relative overflow-hidden rounded-[2.5rem] bg-white/80 shadow-[0_30px_70px_-40px_rgba(10,37,64,0.55)] ring-1 ring-white">
             <ProductArt
-              kind="residential"
+              kind="grand-plus"
               accent="#00C2E8"
               label="Illustrated Auliv home RO purifier"
             />
@@ -63,15 +71,6 @@ export function Hero() {
         </div>
       </div>
 
-      <ul className="relative mx-auto grid max-w-7xl gap-3 px-4 pb-12 sm:grid-cols-2 md:px-6 lg:grid-cols-4 lg:pb-16">
-        {FEATURES.map((feature) => (
-          <li key={feature.title} className="rounded-2xl bg-white/80 p-4 ring-1 ring-navy/5">
-            <feature.icon className="size-5 text-brand-deep" aria-hidden="true" />
-            <p className="mt-3 font-semibold text-navy">{feature.title}</p>
-            <p className="mt-1 text-sm leading-relaxed text-muted">{feature.text}</p>
-          </li>
-        ))}
-      </ul>
       <WaveDivider fillClass="fill-white" />
     </section>
   );

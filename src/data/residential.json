@@ -5,7 +5,7 @@
     "mrp": 33000,
     "description": "Our top smart purifier with RO, UF, UV, alkaline and copper stages plus UV protection in the 8 L tank. Track water quality and filter life on your phone, now backed by a 2-year warranty.",
     "category": "residential",
-    "art": "iot"
+    "art": "iot-supreme-2y"
   },
   {
     "name": "Auliv Ace IoT 2Y",
@@ -13,7 +13,7 @@
     "mrp": 33000,
     "description": "Smart RO+UF purifier with mineral-balancing TDS control and app-based alerts for filter life and water quality. 20 L/hr output, 8 L tank, wall or table-top fit, with 2-year warranty.",
     "category": "residential",
-    "art": "iot"
+    "art": "iot-ace-2y"
   },
   {
     "name": "Auliv New Grand",
@@ -21,7 +21,7 @@
     "mrp": 23000,
     "description": "Great-value wall-mounted RO+UF purifier with TDS control that keeps useful minerals in. UV light in the 7.5 L tank keeps stored water fresh; ideal for tap, borewell or municipal supply.",
     "category": "residential",
-    "art": "residential"
+    "art": "new-grand"
   },
   {
     "name": "Auliv Supreme IoT",
@@ -29,7 +29,7 @@
     "mrp": 28000,
     "description": "Multi-stage RO, UF, UV, alkaline and copper purification with in-tank UV care. Smart monitoring on mobile shows water quality and filter status, with 20 L/hr output and an 8 L tank.",
     "category": "residential",
-    "art": "iot"
+    "art": "iot-supreme"
   },
   {
     "name": "Auliv Ace IoT",
@@ -37,7 +37,7 @@
     "mrp": 28000,
     "description": "Connected RO+UF purifier with TDS control for balanced, great-tasting water. Get filter and service alerts on your phone; fits on the wall or kitchen counter.",
     "category": "residential",
-    "art": "iot"
+    "art": "iot-ace"
   },
   {
     "name": "Auliv Sapphire",
@@ -45,7 +45,7 @@
     "mrp": 25000,
     "description": "Premium purifier combining RO, UF, inline UV, alkaline and copper stages with TDS control. Delivers 20 L/hr of mineral-rich water with an 8 L storage tank.",
     "category": "residential",
-    "art": "residential"
+    "art": "sapphire"
   },
   {
     "name": "Auliv Grand Plus",
@@ -53,7 +53,7 @@
     "mrp": 25500,
     "description": "Wall-mounted RO+UV+UF purifier with TDS control and a generous 9 L tank, suited to larger families. Purifies up to 20 L/hr from tap, borewell or municipal water.",
     "category": "residential",
-    "art": "residential"
+    "art": "grand-plus"
   },
   {
     "name": "Auliv Crown Plus",
@@ -61,7 +61,7 @@
     "mrp": 26500,
     "description": "Stylish wall-mounted purifier with RO, UV, UF and copper stages plus TDS control. Gives safe, mineral-balanced water at up to 20 L/hr.",
     "category": "residential",
-    "art": "residential"
+    "art": "crown"
   },
   {
     "name": "Auliv Elegant",
@@ -69,7 +69,7 @@
     "mrp": 23500,
     "description": "Sleek wall-mounted RO+UF purifier with TDS control that retains essential minerals. 20 L/hr purification and an 8 L tank for everyday family use.",
     "category": "residential",
-    "art": "residential"
+    "art": "elegant"
   },
   {
     "name": "Auliv Grand",
@@ -77,7 +77,7 @@
     "mrp": 23000,
     "description": "Classic wall-mounted RO+UF purifier with TDS control and UV care in the tank. A dependable 20 L/hr choice with 8 L storage for Indian homes.",
     "category": "residential",
-    "art": "residential"
+    "art": "grand"
   },
   {
     "name": "Auliv Supreme",
@@ -85,7 +85,7 @@
     "mrp": 23500,
     "description": "Reliable RO+UF purifier with TDS control for clean water that keeps its natural taste. Wall-mounted design with 20 L/hr purification.",
     "category": "residential",
-    "art": "residential"
+    "art": "supreme"
   },
   {
     "name": "Auliv Ace",
@@ -93,7 +93,7 @@
     "mrp": 23500,
     "description": "Compact wall-mounted RO+UF purifier with TDS control and UV care for stored water. 20 L/hr output with an 8 L tank, ideal for small to mid-size families.",
     "category": "residential",
-    "art": "residential"
+    "art": "ace"
   },
   {
     "name": "Auliv Marvel Plus",
@@ -101,6 +101,6 @@
     "mrp": 21500,
     "description": "Budget-friendly RO+UF purifier with copper infusion, TDS control and UV in the tank. 8 L storage and flexible wall or table-top installation.",
     "category": "residential",
-    "art": "residential"
+    "art": "marvel"
   }
 ]

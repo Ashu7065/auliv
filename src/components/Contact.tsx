@@ -43,8 +43,8 @@ const CHANNELS: {
     icon: InstagramIcon,
   },
   {
-    label: "Facebook",
-    value: "Auliv on Facebook",
+    label: "Follow on Facebook",
+    value: "Auliv Purifiers",
     href: FACEBOOK_URL,
     external: true,
     icon: FacebookIcon,
