@@ -37,7 +37,7 @@ export default function App() {
       <CatalogPage
         eyebrow="For homes"
         title="Residential ROs"
-        lede="All thirteen home purifiers, from everyday wall-mounted ROs to smart IoT models with app alerts and a longer warranty."
+        lede="All fifteen home purifiers, from everyday wall-mounted ROs to smart IoT models with app alerts and a longer warranty."
         products={residentialProducts}
         tone="plain"
       />

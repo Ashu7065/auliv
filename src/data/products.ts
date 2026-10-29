@@ -22,16 +22,21 @@ export type ArtKind =
   | "perk"
   | "dispenser"
   | "elixir-steel"
-  | "elixir-abs";
+  | "elixir-abs"
+  | "mars"
+  | "uts";
 
 export type Product = {
   name: string;
-  price: number;
-  mrp: number;
+  /** Null when Auliv has not published a price. Cards then say Ask on WhatsApp. */
+  price: number | null;
+  mrp: number | null;
   description: string;
   category: "residential" | "commercial";
   art: ArtKind;
   badge?: "UV+UF";
+  /** Studio-photo slug when it differs from the display name, without an extension. */
+  photo?: string;
 };
 
 export const residentialProducts = residential as Product[];
@@ -73,9 +78,10 @@ const PHOTO_EXTENSIONS = ["png", "jpg", "jpeg", "webp", "avif"] as const;
 /**
  * Studio photo for a catalog model. The file name is the Auliv product name
  * (auliv_name) as a slug, for example "Auliv Grand Plus" → auliv-grand-plus.png.
+ * Pass `photo` when the file slug differs from the display name.
  */
-export function productPhoto(name: string) {
-  const slug = productSlug(name);
+export function productPhoto(name: string, photo?: string) {
+  const slug = photo || productSlug(name);
   const match = Object.entries(photoModules).find(([file]) =>
     PHOTO_EXTENSIONS.some((extension) => file.endsWith(`/${slug}.${extension}`)),
   );

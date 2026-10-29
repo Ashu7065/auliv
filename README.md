@@ -20,7 +20,7 @@ npm run preview
 
 ## What’s on the page
 
-- Home hero, residential carousel (8 of 13), commercial carousel (6 of 8), AMC, Contact
+- Home hero, residential carousel (8 of 15), commercial carousel (6 of 8), AMC, Contact
 - Full listings at `/residential` and `/commercial`
 - Hero: morning kitchen with the Auliv Sapphire, WhatsApp, and one trust line
 - Soft cyan wave under the hero only; commercial and AMC use alternating soft washes
@@ -35,7 +35,7 @@ WhatsApp links use `https://wa.me/918368879809` with a prefilled message that na
 
 ## Product images
 
-Each residential and commercial card shows a white-background studio photo from `src/assets/products/`. The file name is the model name (`auliv_name`) as a slug: lowercase, with spaces and punctuation as hyphens. `Auliv Grand Plus` uses `auliv-grand-plus.png`. `productPhoto()` in `src/data/products.ts` resolves that file, and the card renders it with `object-contain` on a white background.
+Each residential and commercial card shows a white-background studio photo from `src/assets/products/`. The file name is the model name (`auliv_name`) as a slug: lowercase, with spaces and punctuation as hyphens. `Auliv Grand Plus` uses `auliv-grand-plus.png`. When the display name should stay different, the catalog row sets `photo` to that file slug (`UTS-ro` uses `auliv-uts-ro.png`). `productPhoto()` in `src/data/products.ts` resolves that file, and the card renders it with `object-contain` on a white background. Models without a published price show Ask on WhatsApp instead of an amount.
 
 Do not hotlink another brand’s photos. Card copy is one short line so the price and WhatsApp button lead.
 
