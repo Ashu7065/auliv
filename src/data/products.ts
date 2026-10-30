@@ -56,7 +56,8 @@ export function accentFor(index: number) {
   return ACCENTS[index % ACCENTS.length] ?? "#00C2E8";
 }
 
-const photoModules = import.meta.glob("../assets/products/*.{png,jpg,jpeg,webp,avif}", {
+/** Web-sized copies (720px JPEG) of the studio masters in assets/products. */
+const photoModules = import.meta.glob("../assets/products-web/*.{png,jpg,jpeg,webp,avif}", {
   eager: true,
   import: "default",
 }) as Record<string, string>;

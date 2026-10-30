@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const SECTION_IDS = ["home", "residential", "commercial", "amc", "contact"] as const;
+const SECTION_IDS = ["home", "about", "residential", "commercial", "services", "amc", "contact"] as const;
 
 function onHomePage() {
   return (window.location.pathname.replace(/\/+$/, "") || "/") === "/";

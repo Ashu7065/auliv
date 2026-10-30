@@ -2,14 +2,21 @@
 
 @theme {
   --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
-  --color-brand: #00c2e8;
-  --color-brand-hover: #00b0d2;
-  --color-brand-deep: #06657a;
-  --color-navy: #0a2540;
-  --color-ink: #14324d;
-  --color-muted: #3d5570;
-  --color-mist: #f5fbfd;
-  --color-foam: #e7f7fb;
+  --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  /* Palette: Midnight Navy, Deep Ocean, Electric Aqua, Ice White, Platinum. */
+  --color-navy: #071c2c;
+  --color-ocean: #103b50;
+  --color-navy-soft: #103b50;
+  --color-brand: #43d9e8;
+  --color-brand-hover: #6be3ef;
+  --color-brand-deep: #0e7e8c;
+  --color-sky: #43d9e8;
+  --color-ink: #071c2c;
+  --color-muted: #4c6273;
+  --color-mist: #f4f8fa;
+  --color-pearl: #f4f8fa;
+  --color-foam: #e3f6f9;
+  --color-platinum: #c5d0d8;
 }
 
 html {
@@ -29,6 +36,16 @@ body {
   color: var(--color-ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+@layer base {
+  h1,
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
 }
 
 section[id] {
@@ -36,8 +53,8 @@ section[id] {
 }
 
 ::selection {
-  background: #00c2e8;
-  color: #0a2540;
+  background: #43d9e8;
+  color: #071c2c;
 }
 
 .skip-link {
@@ -48,7 +65,7 @@ section[id] {
   transform: translateY(-200%);
   border-radius: 9999px;
   background: #fff;
-  color: #0a2540;
+  color: #071c2c;
   padding: 0.6rem 1rem;
   font-weight: 600;
   box-shadow: 0 8px 24px rgba(10, 37, 64, 0.16);
@@ -56,6 +73,16 @@ section[id] {
 
 .skip-link:focus {
   transform: none;
-  outline: 2px solid #0a2540;
+  outline: 2px solid #071c2c;
   outline-offset: 2px;
+}
+
+/* Light sweep across text clipped to a wide gradient, as on the AMC "Coming soon" price. */
+@keyframes shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
 }
