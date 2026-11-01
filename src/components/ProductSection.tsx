@@ -4,7 +4,7 @@ import { ProductCarousel } from "@/components/ProductCarousel";
 import { Reveal } from "@/components/motion";
 import { Segmented } from "@/components/Segmented";
 import { WhatsAppLink } from "@/components/WhatsAppLink";
-import type { Product } from "@/data/products";
+import { startingPrice, type Product } from "@/data/products";
 import { formatInr } from "@/lib/contact";
 import { cn } from "@/lib/utils";
 
@@ -39,7 +39,7 @@ export function ProductSection({
   const tabs = filters ? [{ label: "All", match: () => true }, ...filters] : [];
   const [tab, setTab] = useState(0);
   const shown = tab === 0 ? products : catalog.filter(tabs[tab].match);
-  const from = Math.min(...catalog.map((product) => product.price));
+  const from = startingPrice(catalog);
 
   return (
     <section id={id} className={cn("overflow-x-clip", tone === "tinted" ? "bg-pearl" : "bg-white")}>
@@ -59,10 +59,14 @@ export function ProductSection({
             {catalog.length > 0 && (
               <p className="mt-5 flex items-center gap-3 text-sm text-muted">
                 <span className="font-semibold text-navy">{catalog.length} models</span>
-                <span className="h-3 w-px bg-platinum" aria-hidden="true" />
-                <span>
-                  From <span className="font-semibold text-navy tabular-nums">{formatInr(from)}</span>
-                </span>
+                {from != null && (
+                  <>
+                    <span className="h-3 w-px bg-platinum" aria-hidden="true" />
+                    <span>
+                      From <span className="font-semibold text-navy tabular-nums">{formatInr(from)}</span>
+                    </span>
+                  </>
+                )}
               </p>
             )}
           </div>

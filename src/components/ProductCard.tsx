@@ -1,6 +1,6 @@
 import { m, type MotionStyle } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { productPhoto, type Product } from "@/data/products";
+import { listedPrice, productPhoto, type Product } from "@/data/products";
 import { formatInr, waLink } from "@/lib/contact";
 import { cn } from "@/lib/utils";
 
@@ -14,8 +14,9 @@ export function ProductCard({
   /** Photo panel colour: "tint" on white sections, "white" on tinted ones so cards keep their edge. */
   stage?: "tint" | "white";
 }) {
-  const photo = productPhoto(product.name);
-  const savings = Math.round((1 - product.price / product.mrp) * 100);
+  const photo = productPhoto(product.name, product.photo);
+  const listed = listedPrice(product);
+  const savings = listed && listed.mrp > 0 ? Math.round((1 - listed.price / listed.mrp) * 100) : 0;
 
   return (
     <article className="group flex h-full flex-col">
@@ -61,15 +62,24 @@ export function ProductCard({
           <p className="mt-1 line-clamp-1 text-sm text-muted">{product.description}</p>
         </div>
         <div className="shrink-0 text-right tabular-nums">
-          <p className="font-display text-lg font-semibold tracking-tight text-navy">
-            <span className="sr-only">Price </span>
-            {formatInr(product.price)}
-          </p>
-          <p className="mt-1 text-xs text-muted/70">
-            <span className="sr-only">MRP </span>
-            <span className="line-through">{formatInr(product.mrp)}</span>
-            {savings > 0 && <span className="ml-1.5 font-semibold text-emerald-600">−{savings}%</span>}
-          </p>
+          {listed ? (
+            <>
+              <p className="font-display text-lg font-semibold tracking-tight text-navy">
+                <span className="sr-only">Price </span>
+                {formatInr(listed.price)}
+              </p>
+              <p className="mt-1 text-xs text-muted/70">
+                <span className="sr-only">MRP </span>
+                <span className="line-through">{formatInr(listed.mrp)}</span>
+                {savings > 0 && <span className="ml-1.5 font-semibold text-emerald-600">−{savings}%</span>}
+              </p>
+            </>
+          ) : (
+            <p className="max-w-[8.5rem] font-display text-sm leading-snug font-semibold tracking-tight text-navy">
+              <span className="sr-only">Price </span>
+              Ask on WhatsApp
+            </p>
+          )}
         </div>
       </div>
 

@@ -4,11 +4,12 @@ import { useRef, type PointerEvent as ReactPointerEvent } from "react";
 import heroPhoto from "@/assets/hero-morning-sapphire.jpg";
 import { WhatsAppLink } from "@/components/WhatsAppLink";
 import { Button } from "@/components/ui/button";
-import { residentialProducts } from "@/data/products";
+import { listedPrice, residentialProducts } from "@/data/products";
 import { formatInr } from "@/lib/contact";
 import { EASE, fadeUp, stagger } from "@/lib/motion";
 
 const featured = residentialProducts.find((product) => product.name === "Auliv Sapphire");
+const featuredPrice = featured ? listedPrice(featured) : null;
 
 /** Specs shown around the hero photo. They describe the Sapphire, which is the purifier in the photo. */
 const SPECS = [
@@ -146,14 +147,16 @@ export function Hero() {
                     {featured.name}
                   </span>
                 </span>
-                <span className="text-right">
-                  <span className="block font-display text-lg font-semibold text-navy tabular-nums">
-                    {formatInr(featured.price)}
+                {featuredPrice && (
+                  <span className="text-right">
+                    <span className="block font-display text-lg font-semibold text-navy tabular-nums">
+                      {formatInr(featuredPrice.price)}
+                    </span>
+                    <span className="block text-xs text-muted/70 line-through tabular-nums">
+                      {formatInr(featuredPrice.mrp)}
+                    </span>
                   </span>
-                  <span className="block text-xs text-muted/70 line-through tabular-nums">
-                    {formatInr(featured.mrp)}
-                  </span>
-                </span>
+                )}
                 <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-navy text-brand transition-transform duration-300 group-hover:translate-x-1">
                   <ArrowRight className="size-4" aria-hidden="true" />
                 </span>

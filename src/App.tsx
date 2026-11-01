@@ -50,7 +50,7 @@ export default function App() {
       <CatalogPage
         eyebrow="For homes"
         title="Residential ROs"
-        lede="All thirteen home purifiers, from everyday wall-mounted ROs to smart IoT models with app alerts and a longer warranty."
+        lede="All sixteen home purifiers, from everyday wall-mounted ROs to smart IoT models with app alerts and a longer warranty."
         products={residentialProducts}
         filters={residentialFilters}
         tone="plain"
@@ -61,6 +61,7 @@ export default function App() {
         title="Commercial purifiers"
         lede="All eight workplace purifiers. Elixir 1 and Elixir 2 are UV+UF models for low-TDS water — the rest of this range is commercial RO."
         products={commercialProducts}
+        filters={commercialFilters}
         tone="tinted"
       />
     ) : null;

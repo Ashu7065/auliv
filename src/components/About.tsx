@@ -3,7 +3,7 @@ import { ArrowRight, BellRing, Gauge, House, ShieldCheck } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { Reveal } from "@/components/motion";
 import { WhatsAppLink } from "@/components/WhatsAppLink";
-import { commercialProducts, productPhoto, residentialProducts } from "@/data/products";
+import { commercialProducts, listedPrice, productPhoto, residentialProducts } from "@/data/products";
 import { formatInr } from "@/lib/contact";
 import { EASE, fadeUp, staggerInView } from "@/lib/motion";
 
@@ -15,7 +15,8 @@ const EXTRAS = [
 ] as const;
 
 const featured = residentialProducts.find((product) => product.name === "Auliv Supreme IoT 2Y");
-const photo = featured && productPhoto(featured.name);
+const featuredPrice = featured ? listedPrice(featured) : null;
+const photo = featured && productPhoto(featured.name, featured.photo);
 const homeCount = residentialProducts.length;
 const workCount = commercialProducts.length;
 
@@ -181,8 +182,14 @@ function ProductTile() {
         <div>
           <h3 className="font-display text-xl font-semibold tracking-tight text-navy">{featured.name}</h3>
           <p className="mt-1 text-sm text-muted">
-            <span className="font-semibold text-navy tabular-nums">{formatInr(featured.price)}</span>
-            <span className="ml-2 line-through tabular-nums">{formatInr(featured.mrp)}</span>
+            {featuredPrice ? (
+              <>
+                <span className="font-semibold text-navy tabular-nums">{formatInr(featuredPrice.price)}</span>
+                <span className="ml-2 line-through tabular-nums">{formatInr(featuredPrice.mrp)}</span>
+              </>
+            ) : (
+              <span className="font-semibold text-navy">Ask on WhatsApp</span>
+            )}
           </p>
         </div>
         <a
