@@ -3,7 +3,9 @@ import { productPhoto, type Product } from "@/data/products";
 import { formatInr } from "@/lib/contact";
 
 export function ProductCard({ product }: { product: Product }) {
-  const photo = productPhoto(product.name);
+  const photo = productPhoto(product.name, product.photo);
+  const price = product.price;
+  const mrp = product.mrp;
 
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-3xl bg-white shadow-[0_16px_40px_-28px_rgba(10,37,64,0.45)] ring-1 ring-navy/5">
@@ -31,13 +33,22 @@ export function ProductCard({ product }: { product: Product }) {
           <p className="mt-1 text-sm leading-5 text-muted">{product.description}</p>
         </div>
         <div className="mt-auto flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-          <p className="text-2xl font-semibold tracking-tight text-navy">
-            <span className="sr-only">Price </span>
-            {formatInr(product.price)}
-          </p>
-          <p className="text-sm text-muted">
-            MRP <span className="line-through">{formatInr(product.mrp)}</span>
-          </p>
+          {price != null && mrp != null ? (
+            <>
+              <p className="text-2xl font-semibold tracking-tight text-navy">
+                <span className="sr-only">Price </span>
+                {formatInr(price)}
+              </p>
+              <p className="text-sm text-muted">
+                MRP <span className="line-through">{formatInr(mrp)}</span>
+              </p>
+            </>
+          ) : (
+            <p className="text-2xl font-semibold tracking-tight text-navy">
+              <span className="sr-only">Price </span>
+              Ask on WhatsApp
+            </p>
+          )}
         </div>
         <WhatsAppLink message={`Hi, I'm interested in ${product.name}`} className="w-full" />
       </div>

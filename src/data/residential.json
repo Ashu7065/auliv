@@ -1,5 +1,30 @@
 [
   {
+    "name": "Auliv Mars RO",
+    "price": null,
+    "mrp": null,
+    "description": "Wall or counter RO in smoked black, with two taps and the Auliv mark.",
+    "category": "residential",
+    "art": "mars"
+  },
+  {
+    "name": "UTS-ro",
+    "price": null,
+    "mrp": null,
+    "description": "Under-the-sink Auliv set with a chrome faucet, white purifier, and storage tank.",
+    "category": "residential",
+    "art": "uts",
+    "photo": "auliv-uts-ro"
+  },
+  {
+    "name": "Auliv UTS Excell",
+    "price": null,
+    "mrp": null,
+    "description": "Under-sink Auliv RO with a chrome faucet, storage tank, and three filter canisters.",
+    "category": "residential",
+    "art": "uts-excell"
+  },
+  {
     "name": "Auliv Supreme IoT 2Y",
     "price": 21999,
     "mrp": 33000,
