@@ -5,6 +5,9 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
 const expectedResidential = [
+  ["Auliv Mars RO", null, null],
+  ["UTS-ro", null, null],
+  ["Auliv UTS Excell", null, null],
   ["Auliv Supreme IoT 2Y", 21999, 33000],
   ["Auliv Ace IoT 2Y", 22999, 33000],
   ["Auliv New Grand", 12499, 23000],
@@ -82,13 +85,30 @@ function productSlug(name) {
     .replace(/(^-|-$)/g, "");
 }
 
+function photoFile(row) {
+  const slug = typeof row.photo === "string" && row.photo ? row.photo : productSlug(row.name);
+  return `${slug}.png`;
+}
+
 const photoDir = path.join(root, "src/assets/products");
 const photoFiles = new Set(readdirSync(photoDir).filter((name) => name.endsWith(".png")));
 for (const row of [...residential, ...commercial]) {
-  const file = `${productSlug(row.name)}.png`;
+  const file = photoFile(row);
   assert(photoFiles.has(file), `${row.name} is missing studio photo ${file}`);
 }
-assert(photoFiles.size === residential.length + commercial.length, `expected 21 product photos, found ${photoFiles.size}`);
+const expectedPhotos = residential.length + commercial.length;
+assert(
+  photoFiles.size === expectedPhotos,
+  `expected ${expectedPhotos} product photos, found ${photoFiles.size}`,
+);
+
+const webDir = path.join(root, "src/assets/products-web");
+const webFiles = new Set(readdirSync(webDir).filter((name) => /\.(png|jpe?g|webp|avif)$/.test(name)));
+for (const row of [...residential, ...commercial]) {
+  const slug = typeof row.photo === "string" && row.photo ? row.photo : productSlug(row.name);
+  const hasWeb = ["jpg", "jpeg", "png", "webp", "avif"].some((extension) => webFiles.has(`${slug}.${extension}`));
+  assert(hasWeb, `${row.name} is missing a web-sized photo ${slug}`);
+}
 
 const uploadResidential = "uploads/auliv-catalog_0549.json";
 const uploadCommercial = "uploads/auliv-commercial-catalog_90d0.json";

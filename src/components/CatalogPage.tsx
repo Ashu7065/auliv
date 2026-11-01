@@ -5,7 +5,7 @@ import { ProductCard } from "@/components/ProductCard";
 import type { ProductFilter } from "@/components/ProductSection";
 import { Segmented } from "@/components/Segmented";
 import { WhatsAppLink } from "@/components/WhatsAppLink";
-import type { Product } from "@/data/products";
+import { startingPrice, type Product } from "@/data/products";
 import { formatInr } from "@/lib/contact";
 import { EASE, fadeUp, stagger } from "@/lib/motion";
 
@@ -40,8 +40,8 @@ export function CatalogPage({
   const shown =
     sort === "featured"
       ? filtered
-      : [...filtered].sort((a, b) => (sort === "low" ? a.price - b.price : b.price - a.price));
-  const from = Math.min(...products.map((product) => product.price));
+      : [...filtered].sort((a, b) => compareByPrice(a, b, sort === "low" ? "low" : "high"));
+  const from = startingPrice(products);
 
   return (
     <>
@@ -105,7 +105,7 @@ export function CatalogPage({
           >
             {[
               { label: "Models", value: String(products.length) },
-              { label: "Starting at", value: formatInr(from) },
+              { label: "Starting at", value: from == null ? "Ask" : formatInr(from) },
               { label: "Installation", value: "Free" },
             ].map((stat) => (
               <div key={stat.label} className="px-4 py-5 sm:px-7 sm:py-6">
@@ -180,6 +180,14 @@ export function CatalogPage({
       </section>
     </>
   );
+}
+
+/** Unpublished prices stay at the end of either price sort. */
+function compareByPrice(a: Product, b: Product, direction: "low" | "high") {
+  if (a.price == null && b.price == null) return 0;
+  if (a.price == null) return 1;
+  if (b.price == null) return -1;
+  return direction === "low" ? a.price - b.price : b.price - a.price;
 }
 
 /** Closes the grid with a way to ask for advice, so the last row never ends on a lone card. */
