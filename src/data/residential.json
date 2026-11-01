@@ -1,19 +1,29 @@
 [
   {
-    "name": "Auliv Supreme IoT 2Y",
-    "price": 21999,
-    "mrp": 33000,
-    "description": "Top smart RO with alkaline, copper, app alerts, and a 2-year warranty.",
+    "name": "Auliv Mars RO",
+    "price": 6500,
+    "mrp": 8000,
+    "description": "Wall or counter RO in smoked black, RO+UV+UF+TDS controller , and a 9 L tank.",
     "category": "residential",
-    "art": "iot-supreme-2y"
+    "art": "auliv-mars-ro"
   },
   {
-    "name": "Auliv Ace IoT 2Y",
-    "price": 22999,
-    "mrp": 33000,
-    "description": "Connected RO+UF with TDS control, an 8 L tank, and a 2-year warranty.",
+    "name": "Auliv UTS-RO",
+    "price": 14999,
+    "mrp": 21000,
+    "description": "Under-the-sink Auliv set with a chrome faucet, RO+UV purification, Active Copper purifier, TDS controller and a 8 L tank.",
     "category": "residential",
-    "art": "iot-ace-2y"
+    "art": "auliv-uts-ro",
+    "photo": "auliv-uts-ro"
+  },
+    {
+    "name": "Auliv UTS Excell plus",
+    "price": 13999,
+    "mrp": 20000,
+    "description": "Under-the-sink Auliv set , RO+UV purification, Active Copper purifier, TDS controller and a 8 L tank.",
+    "category": "residential",
+    "art": "auliv-uts-excell",
+    "photo": "auliv-uts-excell"
   },
   {
     "name": "Auliv New Grand",
@@ -22,14 +32,6 @@
     "description": "Wall-mounted RO+UF with TDS control and UV care in a 7.5 L tank.",
     "category": "residential",
     "art": "new-grand"
-  },
-  {
-    "name": "Auliv Supreme IoT",
-    "price": 17999,
-    "mrp": 28000,
-    "description": "RO, UF, UV, alkaline and copper, with water-quality alerts on your phone.",
-    "category": "residential",
-    "art": "iot-supreme"
   },
   {
     "name": "Auliv Ace IoT",
@@ -86,14 +88,6 @@
     "description": "RO+UF with TDS control for clean water that keeps its taste.",
     "category": "residential",
     "art": "supreme"
-  },
-  {
-    "name": "Auliv Ace",
-    "price": 14099,
-    "mrp": 23500,
-    "description": "Compact wall-mounted RO+UF with UV care and an 8 L storage tank.",
-    "category": "residential",
-    "art": "ace"
   },
   {
     "name": "Auliv Marvel Plus",
