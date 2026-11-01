@@ -9,7 +9,7 @@ export function ProductCard({ product }: { product: Product }) {
 
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-3xl bg-white shadow-[0_16px_40px_-28px_rgba(10,37,64,0.45)] ring-1 ring-navy/5">
-      <div className="relative aspect-square bg-white">
+      <div className="relative flex h-40 items-center justify-center bg-white px-6 sm:h-44">
         {product.badge && (
           <span className="absolute top-3 left-3 z-10 rounded-full bg-brand px-2.5 py-1 text-xs font-semibold tracking-wide text-navy">
             {product.badge}
@@ -23,7 +23,7 @@ export function ProductCard({ product }: { product: Product }) {
             height={1024}
             loading="lazy"
             decoding="async"
-            className="h-full w-full object-contain"
+            className="max-h-32 w-auto max-w-[70%] object-contain sm:max-h-36"
           />
         )}
       </div>

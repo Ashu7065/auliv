@@ -2,6 +2,7 @@ import { ArrowRight } from "lucide-react";
 import type { ReactNode } from "react";
 import { ProductCarousel } from "@/components/ProductCarousel";
 import { WhatsAppLink } from "@/components/WhatsAppLink";
+import { Button } from "@/components/ui/button";
 import type { Product } from "@/data/products";
 
 export function ProductSection({
@@ -34,14 +35,13 @@ export function ProductSection({
         ) : (
           <>
             <ProductCarousel products={products} label={title} />
-            <div className="mt-5 flex justify-center">
-              <a
-                href={exploreHref}
-                className="inline-flex items-center gap-1.5 text-sm font-semibold text-navy transition-colors hover:text-brand"
-              >
-                Explore more
-                <ArrowRight className="size-4" aria-hidden="true" />
-              </a>
+            <div className="mt-6 flex justify-center">
+              <Button asChild variant="secondary" size="sm">
+                <a href={exploreHref}>
+                  Explore more
+                  <ArrowRight aria-hidden="true" />
+                </a>
+              </Button>
             </div>
           </>
         )}
