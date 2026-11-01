@@ -17,6 +17,14 @@
     "photo": "auliv-uts-ro"
   },
   {
+    "name": "Auliv UTS Excell",
+    "price": null,
+    "mrp": null,
+    "description": "Under-sink Auliv RO with a chrome faucet, storage tank, and three filter canisters.",
+    "category": "residential",
+    "art": "uts-excell"
+  },
+  {
     "name": "Auliv Supreme IoT 2Y",
     "price": 21999,
     "mrp": 33000,

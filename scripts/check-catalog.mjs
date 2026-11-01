@@ -7,6 +7,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const expectedResidential = [
   ["Auliv Mars RO", null, null],
   ["UTS-ro", null, null],
+  ["Auliv UTS Excell", null, null],
   ["Auliv Supreme IoT 2Y", 21999, 33000],
   ["Auliv Ace IoT 2Y", 22999, 33000],
   ["Auliv New Grand", 12499, 23000],

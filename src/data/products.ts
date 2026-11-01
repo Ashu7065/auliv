@@ -24,7 +24,8 @@ export type ArtKind =
   | "elixir-steel"
   | "elixir-abs"
   | "mars"
-  | "uts";
+  | "uts"
+  | "uts-excell";
 
 export type Product = {
   name: string;

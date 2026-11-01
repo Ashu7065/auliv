@@ -20,7 +20,7 @@ npm run preview
 
 ## What’s on the page
 
-- Home hero, residential carousel (8 of 15), commercial carousel (6 of 8), AMC, Contact
+- Home hero, residential carousel (8 of 16), commercial carousel (6 of 8), AMC, Contact
 - Full listings at `/residential` and `/commercial`
 - Hero: morning kitchen with the Auliv Sapphire, WhatsApp, and one trust line
 - Soft cyan wave under the hero only; commercial and AMC use alternating soft washes
