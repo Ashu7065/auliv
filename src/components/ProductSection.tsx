@@ -39,7 +39,10 @@ export function ProductSection({
   const tabs = filters ? [{ label: "All", match: () => true }, ...filters] : [];
   const [tab, setTab] = useState(0);
   const shown = tab === 0 ? products : catalog.filter(tabs[tab].match);
-  const from = Math.min(...catalog.map((product) => product.price));
+  const prices = catalog
+    .map((product) => product.price)
+    .filter((price): price is number => price != null);
+  const from = prices.length > 0 ? Math.min(...prices) : null;
 
   return (
     <section id={id} className={cn("overflow-x-clip", tone === "tinted" ? "bg-pearl" : "bg-white")}>

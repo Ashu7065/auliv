@@ -40,8 +40,15 @@ export function CatalogPage({
   const shown =
     sort === "featured"
       ? filtered
-      : [...filtered].sort((a, b) => (sort === "low" ? a.price - b.price : b.price - a.price));
-  const from = Math.min(...products.map((product) => product.price));
+      : [...filtered].sort((a, b) => {
+          const aPrice = a.price ?? Number.POSITIVE_INFINITY;
+          const bPrice = b.price ?? Number.POSITIVE_INFINITY;
+          return sort === "low" ? aPrice - bPrice : bPrice - aPrice;
+        });
+  const prices = products
+    .map((product) => product.price)
+    .filter((price): price is number => price != null);
+  const from = prices.length > 0 ? Math.min(...prices) : null;
 
   return (
     <>

@@ -15,7 +15,10 @@ export function ProductCard({
   stage?: "tint" | "white";
 }) {
   const photo = productPhoto(product.name);
-  const savings = Math.round((1 - product.price / product.mrp) * 100);
+  const savings =
+    product.price != null && product.mrp != null && product.mrp > 0
+      ? Math.round((1 - product.price / product.mrp) * 100)
+      : 0;
 
   return (
     <article className="group flex h-full flex-col">
@@ -61,15 +64,21 @@ export function ProductCard({
           <p className="mt-1 line-clamp-1 text-sm text-muted">{product.description}</p>
         </div>
         <div className="shrink-0 text-right tabular-nums">
-          <p className="font-display text-lg font-semibold tracking-tight text-navy">
-            <span className="sr-only">Price </span>
-            {formatInr(product.price)}
-          </p>
-          <p className="mt-1 text-xs text-muted/70">
-            <span className="sr-only">MRP </span>
-            <span className="line-through">{formatInr(product.mrp)}</span>
-            {savings > 0 && <span className="ml-1.5 font-semibold text-emerald-600">−{savings}%</span>}
-          </p>
+          {product.price == null ? (
+            <p className="font-display text-base font-semibold tracking-tight text-navy">Ask on WhatsApp</p>
+          ) : (
+            <p className="font-display text-lg font-semibold tracking-tight text-navy">
+              <span className="sr-only">Price </span>
+              {formatInr(product.price)}
+            </p>
+          )}
+          {product.mrp != null && (
+            <p className="mt-1 text-xs text-muted/70">
+              <span className="sr-only">MRP </span>
+              <span className="line-through">{formatInr(product.mrp)}</span>
+              {savings > 0 && <span className="ml-1.5 font-semibold text-emerald-600">−{savings}%</span>}
+            </p>
+          )}
         </div>
       </div>
 
