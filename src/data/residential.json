@@ -1,122 +1,90 @@
 [
   {
     "name": "Auliv Mars RO",
-    "price": null,
-    "mrp": null,
-    "description": "Wall or counter RO in smoked black, with two taps and the Auliv mark.",
+    "price": 6499,
+    "mrp": 8000,
+    "description": "Wall or counter RO, with UV + UF + TDS.",
     "category": "residential",
-    "art": "mars"
+    "art": "mars-ro"
   },
   {
-    "name": "UTS-ro",
-    "price": null,
-    "mrp": null,
-    "description": "Under-the-sink Auliv set with a chrome faucet, white purifier, and storage tank.",
+    "name": "Auliv UTS-RO",
+    "price": 14999,
+    "mrp": 21000,
+    "description": "Under-the-sink Auliv set with a chrome faucet, UV + UF + Minerals and TDS controller, and 7 L storage tank.",
     "category": "residential",
     "art": "uts",
     "photo": "auliv-uts-ro"
   },
   {
     "name": "Auliv UTS Excell",
-    "price": null,
-    "mrp": null,
-    "description": "Under-sink Auliv RO with a chrome faucet, storage tank, and three filter canisters.",
+    "price": 13999,
+    "mrp": 20000,
+    "description": "Under-sink RO , UV + UF + Minerals and TDS controller, 7 L storage tank.",
     "category": "residential",
     "art": "uts-excell"
   },
   {
-    "name": "Auliv Supreme IoT 2Y",
-    "price": 21999,
-    "mrp": 33000,
-    "description": "Top smart RO with alkaline, copper, app alerts, and a 2-year warranty.",
-    "category": "residential",
-    "art": "iot-supreme-2y"
-  },
-  {
-    "name": "Auliv Ace IoT 2Y",
-    "price": 22999,
-    "mrp": 33000,
-    "description": "Connected RO+UF with TDS control, an 8 L tank, and a 2-year warranty.",
-    "category": "residential",
-    "art": "iot-ace-2y"
-  },
-  {
     "name": "Auliv New Grand",
-    "price": 12499,
-    "mrp": 23000,
-    "description": "Wall-mounted RO+UF with TDS control and UV care in a 7.5 L tank.",
+    "price": 9500,
+    "mrp": 14000,
+    "description": "Wall-mounted RO + UF with TDS control and UV care in a 7.5 L tank.",
     "category": "residential",
     "art": "new-grand"
   },
   {
-    "name": "Auliv Supreme IoT",
-    "price": 17999,
-    "mrp": 28000,
-    "description": "RO, UF, UV, alkaline and copper, with water-quality alerts on your phone.",
-    "category": "residential",
-    "art": "iot-supreme"
-  },
-  {
-    "name": "Auliv Ace IoT",
-    "price": 18999,
-    "mrp": 28000,
-    "description": "App-connected RO+UF with TDS control for the wall or the counter.",
-    "category": "residential",
-    "art": "iot-ace"
-  },
-  {
     "name": "Auliv Sapphire",
-    "price": 19999,
-    "mrp": 25000,
-    "description": "RO, UF, UV, alkaline and copper purification with an 8 L tank.",
+    "price": 15999,
+    "mrp": 22000,
+    "description": "RO + UF, UV, alkaline , Minerals and copper purification with an 8 L tank.",
     "category": "residential",
     "art": "sapphire"
   },
   {
     "name": "Auliv Grand Plus",
-    "price": 19999,
-    "mrp": 25500,
-    "description": "Wall-mounted RO+UV+UF with TDS control and a generous 9 L tank.",
+    "price": 10999,
+    "mrp": 17000,
+    "description": "Wall-mounted RO + UV + UF + Copper with TDS control and a generous 9 L tank.",
     "category": "residential",
     "art": "grand-plus"
   },
   {
     "name": "Auliv Crown Plus",
-    "price": 20000,
-    "mrp": 26500,
-    "description": "Wall-mounted RO, UV, UF and copper stages with TDS control.",
+    "price": 12999,
+    "mrp": 19000,
+    "description": "Wall-mounted RO, UV, UF and copper with TDS control , 11 L tank",
     "category": "residential",
     "art": "crown"
   },
   {
     "name": "Auliv Elegant",
-    "price": 16500,
-    "mrp": 23500,
-    "description": "Slim wall-mounted RO+UF with TDS control and an 8 L tank.",
+    "price": 9999,
+    "mrp": 16000,
+    "description": "Slim wall-mounted RO + UF + ALkaline + Copper with TDS control and an 8 L tank.",
     "category": "residential",
     "art": "elegant"
   },
   {
     "name": "Auliv Grand",
-    "price": 14999,
-    "mrp": 23000,
-    "description": "Classic wall-mounted RO+UF with TDS control and in-tank UV care.",
+    "price": 8499,
+    "mrp": 14000,
+    "description": "Classic wall-mounted RO + UF + TDS control and 8 L tank capacity.",
     "category": "residential",
     "art": "grand"
   },
   {
     "name": "Auliv Supreme",
-    "price": 14099,
-    "mrp": 23500,
-    "description": "RO+UF with TDS control for clean water that keeps its taste.",
+    "price": 11999,
+    "mrp": 17000,
+    "description": "RO + UF + TDS with TDS control for clean water that keeps its taste , with 9 L tank capacity.",
     "category": "residential",
     "art": "supreme"
   },
   {
     "name": "Auliv Ace",
-    "price": 14099,
-    "mrp": 23500,
-    "description": "Compact wall-mounted RO+UF with UV care and an 8 L storage tank.",
+    "price": 9999,
+    "mrp": 16000,
+    "description": "Compact wall-mounted RO + UF + UV and an 8 L storage tank.",
     "category": "residential",
     "art": "ace"
   },
@@ -124,7 +92,7 @@
     "name": "Auliv Marvel Plus",
     "price": 12500,
     "mrp": 21500,
-    "description": "RO+UF with copper, TDS control, and wall or table-top installation.",
+    "description": "RO + UF with copper, TDS control, and wall or table-top installation , with 8 L tank capacity.",
     "category": "residential",
     "art": "marvel"
   }
