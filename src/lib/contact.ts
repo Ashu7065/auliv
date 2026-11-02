@@ -10,6 +10,7 @@ export function waLink(message: string) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
-export function formatInr(amount: number) {
+export function formatInr(amount: number | null) {
+  if (amount == null) return "Ask on WhatsApp";
   return `₹${amount.toLocaleString("en-IN")}`;
 }

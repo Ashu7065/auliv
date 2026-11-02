@@ -128,6 +128,7 @@ for (const needle of [
 ]) {
   assert(contact.includes(needle), `contact.ts missing ${needle}`);
 }
+assert(contact.includes("amount == null") || contact.includes("amount === null"), "formatInr should guard null amounts");
 
 const amc = readFileSync(path.join(root, "src/components/Amc.tsx"), "utf8");
 for (const needle of ["New", "Half-yearly", "Yearly", "Coming soon", "Ask about AMC"]) {
