@@ -14,7 +14,7 @@ export function ProductCard({
   /** Photo panel colour: "tint" on white sections, "white" on tinted ones so cards keep their edge. */
   stage?: "tint" | "white";
 }) {
-  const photo = productPhoto(product.name);
+  const photo = productPhoto(product.name, product.photo);
   const savings =
     product.price != null && product.mrp != null && product.mrp > 0
       ? Math.round((1 - product.price / product.mrp) * 100)
