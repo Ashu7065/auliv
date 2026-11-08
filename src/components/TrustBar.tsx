@@ -5,7 +5,7 @@ import { fadeUp, staggerInView } from "@/lib/motion";
 const POINTS = [
   { icon: Wrench, title: "Free installation", detail: "With every purifier" },
   { icon: House, title: "Doorstep service", detail: "Installed and serviced at home" },
-  { icon: ShieldCheck, title: "Up to 2-year warranty", detail: "On IoT 2Y models" },
+  { icon: ShieldCheck, title: "Clear pricing", detail: "Shown on every model card" },
   { icon: Headset, title: "Mon–Sat support", detail: "WhatsApp and phone" },
 ] as const;
 

@@ -17,11 +17,6 @@ import {
   residentialProducts,
 } from "@/data/products";
 
-const residentialFilters: ProductFilter[] = [
-  { label: "Smart IoT", match: (product) => product.name.includes("IoT") },
-  { label: "Classic", match: (product) => !product.name.includes("IoT") },
-];
-
 const commercialFilters: ProductFilter[] = [
   { label: "RO", match: (product) => product.badge !== "UV+UF" },
   { label: "UV+UF", match: (product) => product.badge === "UV+UF" },
@@ -50,9 +45,8 @@ export default function App() {
       <CatalogPage
         eyebrow="For homes"
         title="Residential ROs"
-        lede="All sixteen home purifiers, from everyday wall-mounted ROs to smart IoT models with app alerts and a longer warranty."
+        lede={`All ${residentialProducts.length} home purifiers, from wall-mounted and under-sink ROs to alkaline and copper models.`}
         products={residentialProducts}
-        filters={residentialFilters}
         tone="plain"
       />
     ) : path === "/commercial" ? (
@@ -83,10 +77,9 @@ export default function App() {
                 id="residential"
                 eyebrow="For homes"
                 title="Residential ROs"
-                lede="Home purifiers, from everyday wall-mounted ROs to smart IoT models with app alerts and a longer warranty."
+                lede="Home purifiers, from wall-mounted and under-sink ROs to alkaline and copper models."
                 products={residentialProducts.slice(0, residentialPreviewCount)}
                 catalog={residentialProducts}
-                filters={residentialFilters}
                 tone="plain"
                 exploreHref="/residential"
               />

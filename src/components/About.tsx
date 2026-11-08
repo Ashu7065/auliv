@@ -1,5 +1,5 @@
 import { animate, m, useInView, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, BellRing, Gauge, House, ShieldCheck } from "lucide-react";
+import { ArrowRight, Droplets, Gauge, House, ShieldCheck } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { Reveal } from "@/components/motion";
 import { WhatsAppLink } from "@/components/WhatsAppLink";
@@ -11,11 +11,11 @@ const STAGES = ["RO", "UV", "UF", "Alkaline", "Copper"] as const;
 
 const EXTRAS = [
   { icon: Gauge, title: "TDS control", text: "Available on most Auliv models." },
-  { icon: BellRing, title: "Smart IoT alerts", text: "Water-quality alerts on your phone, on IoT models." },
+  { icon: Droplets, title: "Alkaline and copper", text: "Selected home ROs add alkaline and copper stages." },
 ] as const;
 
-const featured = residentialProducts.find((product) => product.name === "Auliv Supreme IoT 2Y");
-const photo = featured && productPhoto(featured.name);
+const featured = residentialProducts.find((product) => product.name === "Auliv Sapphire");
+const photo = featured && productPhoto(featured.name, featured.photo);
 const homeCount = residentialProducts.length;
 const workCount = commercialProducts.length;
 
@@ -36,8 +36,8 @@ export function About() {
             </h2>
           </div>
           <p className="max-w-md text-lg leading-relaxed text-muted lg:pb-2">
-            Auliv makes purifiers for Indian homes and workplaces — from everyday wall-mounted ROs to smart
-            IoT models — and installs and services them at your doorstep.
+            Auliv makes purifiers for Indian homes and workplaces — wall-mounted, under-sink, and commercial
+            — and installs and services them at your doorstep.
           </p>
         </Reveal>
 
@@ -133,7 +133,7 @@ export function About() {
   );
 }
 
-/** The top smart home purifier, large, with its photo drifting gently as the section scrolls past. */
+/** A current home RO, large, with its photo drifting gently as the section scrolls past. */
 function ProductTile() {
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
@@ -151,11 +151,11 @@ function ProductTile() {
       <div className="relative flex items-start justify-between p-7 md:p-9">
         <span className="inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-1.5 text-xs font-semibold text-navy ring-1 ring-platinum/70 backdrop-blur">
           <span className="size-1.5 rounded-full bg-brand-deep" aria-hidden="true" />
-          Top smart RO
+          Alkaline + copper
         </span>
         <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted">
           <ShieldCheck className="size-4 text-brand-deep" aria-hidden="true" />
-          2-year warranty
+          8 L storage
         </span>
       </div>
 
