@@ -9,7 +9,7 @@ type WhatsAppLinkProps = {
   children?: ReactNode;
   className?: string;
   size?: "default" | "sm" | "lg" | "icon";
-  variant?: "default" | "outline" | "secondary" | "ghost";
+  variant?: "default" | "accent" | "outline" | "glass" | "soft" | "ghost";
 };
 
 export function WhatsAppLink({
