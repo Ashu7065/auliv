@@ -4,7 +4,6 @@ import { ProductCarousel } from "@/components/ProductCarousel";
 import { Reveal } from "@/components/motion";
 import { Segmented } from "@/components/Segmented";
 import { WhatsAppLink } from "@/components/WhatsAppLink";
-import { Button } from "@/components/ui/button";
 import type { Product } from "@/data/products";
 import { formatInr } from "@/lib/contact";
 import { cn } from "@/lib/utils";
