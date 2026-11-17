@@ -3,11 +3,14 @@ import { About } from "@/components/About";
 import { Amc } from "@/components/Amc";
 import { CatalogPage } from "@/components/CatalogPage";
 import { Contact } from "@/components/Contact";
+import { DocumentHead } from "@/components/DocumentHead";
+import { Faq } from "@/components/Faq";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { ProductSection, type ProductFilter } from "@/components/ProductSection";
 import { SectionBoundary } from "@/components/SectionBoundary";
+import { ServiceAreas } from "@/components/ServiceAreas";
 import { Services } from "@/components/Services";
 import { TrustBar } from "@/components/TrustBar";
 import {
@@ -16,6 +19,7 @@ import {
   residentialPreviewCount,
   residentialProducts,
 } from "@/data/products";
+import { normalizePath } from "@/lib/seo";
 
 const commercialFilters: ProductFilter[] = [
   { label: "RO", match: (product) => product.badge !== "UV+UF" },
@@ -23,7 +27,7 @@ const commercialFilters: ProductFilter[] = [
 ];
 
 function pagePath() {
-  return window.location.pathname.replace(/\/+$/, "") || "/";
+  return normalizePath(window.location.pathname);
 }
 
 function ScrollToHash() {
@@ -61,12 +65,18 @@ export default function App() {
 
   return (
     <>
+      <DocumentHead path={path} />
       <a href="#main" className="skip-link">
         Skip to content
       </a>
       <Header />
       <main id="main">
-        {catalog ?? (
+        {catalog ? (
+          <>
+            {catalog}
+            <Faq tone={path === "/commercial" ? "white" : "pearl"} />
+          </>
+        ) : (
           <>
             <ScrollToHash />
             <Hero />
@@ -102,6 +112,8 @@ export default function App() {
             <SectionBoundary>
               <Amc />
             </SectionBoundary>
+            <ServiceAreas />
+            <Faq />
             <Contact />
           </>
         )}

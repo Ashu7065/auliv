@@ -1,0 +1,45 @@
+{
+  "siteName": "Auliv Purifiers",
+  "siteUrl": "https://www.aulivpurifiers.in",
+  "locale": "en_IN",
+  "pages": [
+    {
+      "path": "/",
+      "title": "RO Water Purifiers in Delhi NCR | Noida, Gurugram | Auliv",
+      "description": "Auliv sells home and commercial RO purifiers in Delhi, Noida, Greater Noida, Noida Extension, Gurugram and Faridabad, with AMC and quotes on WhatsApp."
+    },
+    {
+      "path": "/residential",
+      "title": "Home RO in Delhi NCR | UV, UF, Alkaline, Copper | Auliv",
+      "description": "Home RO, UV, UF, alkaline and copper purifiers in Delhi, Noida, Gurugram and Faridabad. Ask about installation and AMC on WhatsApp."
+    },
+    {
+      "path": "/commercial",
+      "title": "Commercial RO for Offices & Businesses in Delhi NCR | Auliv",
+      "description": "Commercial RO purifiers for offices and businesses in Delhi, Noida, Gurugram and Faridabad. Half-yearly and yearly AMC, with quotes on WhatsApp."
+    }
+  ],
+  "cities": ["Delhi", "Noida", "Greater Noida", "Noida Extension", "Gurugram", "Faridabad"],
+  "faq": [
+    {
+      "question": "Which areas do you serve?",
+      "answer": "We install purifiers and make AMC visits in Delhi, Noida, Greater Noida, Noida Extension, Gurugram, and Faridabad."
+    },
+    {
+      "question": "Do you offer AMC?",
+      "answer": "Yes. Half-yearly and yearly plans cover servicing, filter and membrane replacement, and repairs. Prices are not listed here yet — message us on WhatsApp and we’ll follow up."
+    },
+    {
+      "question": "How do I choose between RO, UV, and UF?",
+      "answer": "Most Auliv models are RO purifiers, and many home units also include UV and UF. Elixir 1 and Elixir 2 are UV+UF purifiers for low-TDS municipal water. Tell us your water source on WhatsApp and we’ll suggest a model."
+    },
+    {
+      "question": "Which purifiers include alkaline or copper?",
+      "answer": "Sapphire and Elegant add alkaline and copper purification. Grand Plus, Crown Plus, and Marvel Plus add copper, along with RO and UV or UF. Ask on WhatsApp if you want one of those stages."
+    },
+    {
+      "question": "How do I get a quote?",
+      "answer": "Call or WhatsApp +91 8368879809, Monday to Saturday. Tell us the model, or ask for a recommendation for your home or workplace. We’ll confirm the price, installation, and AMC with you. There is no online store."
+    }
+  ]
+}
