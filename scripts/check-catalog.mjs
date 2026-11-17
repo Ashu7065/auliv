@@ -1,6 +1,7 @@
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { pageMeta, productNode, structuredData } from "../src/lib/seo.ts";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -307,8 +308,171 @@ for (const file of walk(path.join(root, "src"))) {
   }
 }
 
+const seo = load("src/data/seo.json");
+const cities = ["Delhi", "Noida", "Greater Noida", "Noida Extension", "Gurugram", "Faridabad"];
+assert(JSON.stringify(seo.cities) === JSON.stringify(cities), "service cities drifted");
+assert(seo.faq.length >= 4 && seo.faq.length <= 6, `FAQ count ${seo.faq.length} outside 4–6`);
+assert(new Set(seo.faq.map((item) => item.question)).size === seo.faq.length, "FAQ questions should be unique");
+
+for (const route of ["/", "/residential", "/commercial"]) {
+  const meta = pageMeta(route);
+  assert(meta.title.length <= 65, `${route} title is ${meta.title.length} chars`);
+  assert(meta.description.length <= 160, `${route} description is ${meta.description.length} chars`);
+  assert(meta.title.includes("Auliv"), `${route} title should name Auliv`);
+  assert(/whatsapp/i.test(meta.description), `${route} description should mention WhatsApp`);
+  assert(/\bAMC\b/.test(meta.description), `${route} description should mention AMC`);
+  assert(cities.some((city) => meta.description.includes(city)), `${route} description should mention an NCR city`);
+  assert(!meta.description.includes("\n"), `${route} description should be one line`);
+}
+for (const city of cities) {
+  assert(pageMeta("/").description.includes(city), `home description missing ${city}`);
+}
+assert(pageMeta("/").canonical === "https://www.aulivpurifiers.in/", "home canonical");
+assert(pageMeta("/residential").canonical === "https://www.aulivpurifiers.in/residential", "residential canonical");
+assert(pageMeta("/commercial").canonical === "https://www.aulivpurifiers.in/commercial", "commercial canonical");
+assert(pageMeta("/unknown").canonical === "https://www.aulivpurifiers.in/", "unknown paths canonicalize home");
+
+function keysOf(value, found = []) {
+  if (Array.isArray(value)) {
+    for (const item of value) keysOf(item, found);
+    return found;
+  }
+  if (value && typeof value === "object") {
+    for (const [key, child] of Object.entries(value)) {
+      found.push(key);
+      keysOf(child, found);
+    }
+  }
+  return found;
+}
+
+function graphNode(pathname, type) {
+  const graph = structuredData(pathname)["@graph"];
+  return graph.find((node) => node["@type"] === type);
+}
+
+const business = graphNode("/", "LocalBusiness");
+assert(business.name === "Auliv Purifiers", "business name");
+assert(business.url === "https://www.aulivpurifiers.in/", "business url");
+assert(business.telephone === "+918368879809", "business telephone");
+assert(JSON.stringify(business.sameAs) === JSON.stringify([
+  "https://www.instagram.com/aulivoffical/",
+  "https://www.facebook.com/profile.php?id=61595562017874",
+]), "sameAs");
+assert(
+  JSON.stringify(business.areaServed) === JSON.stringify(cities.map((name) => ({ "@type": "City", name }))),
+  "areaServed cities",
+);
+const hours = business.openingHoursSpecification;
+assert(hours.length === 1 && !("opens" in hours[0]) && !("closes" in hours[0]), "hours are days only");
+assert(
+  JSON.stringify(hours[0].dayOfWeek) === JSON.stringify(["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]),
+  "open Monday through Saturday",
+);
+
+for (const pathname of ["/", "/residential", "/commercial"]) {
+  const data = structuredData(pathname);
+  const keys = keysOf(data);
+  assert(!keys.includes("address") && !keys.includes("streetAddress") && !keys.includes("postalCode"), `${pathname} must not publish an address`);
+  const faq = graphNode(pathname, "FAQPage");
+  assert(faq.mainEntity.length === seo.faq.length, `${pathname} FAQPage count`);
+  seo.faq.forEach((item, index) => {
+    assert(faq.mainEntity[index].name === item.question, `${pathname} FAQ question ${index}`);
+    assert(faq.mainEntity[index].acceptedAnswer.text === item.answer, `${pathname} FAQ answer ${index}`);
+  });
+}
+
+assert(graphNode("/", "ItemList") == null, "home JSON-LD has no product list");
+
+function assertCatalogList(pathname, expected) {
+  const list = graphNode(pathname, "ItemList");
+  assert(list.numberOfItems === expected.length, `${pathname} item count`);
+  assert(list.itemListElement.length === expected.length, `${pathname} list length`);
+  expected.forEach(([name, price], index) => {
+    const item = list.itemListElement[index].item;
+    assert(item.name === name, `${pathname} product ${index}`);
+    assert(item.offers.price === String(price), `${name} offer price`);
+    assert(item.offers.priceCurrency === "INR", `${name} currency`);
+    assert(!("mrp" in item), `${name} schema should not invent an MRP field`);
+  });
+}
+assertCatalogList("/residential", expectedResidential);
+assertCatalogList("/commercial", expectedCommercial);
+
+const unpriced = productNode({ name: "Sample", description: "Ask on WhatsApp", price: null });
+assert(!("offers" in unpriced), "omit price when it is not published");
+
+const html = readFileSync(path.join(root, "index.html"), "utf8");
+const home = pageMeta("/");
+assert(html.includes(`<title>${home.title}</title>`), "index.html title");
+assert(html.includes(`content="${home.description}"`), "index.html description");
+assert(html.includes(`<link rel="canonical" href="${home.canonical}" />`), "index.html canonical");
+assert(html.includes('property="og:title"'), "og:title");
+assert(html.includes('property="og:description"'), "og:description");
+assert(html.includes('property="og:url"'), "og:url");
+assert(html.includes('property="og:type"'), "og:type");
+assert(html.includes('name="twitter:card"'), "twitter:card");
+assert(html.includes('name="twitter:title"'), "twitter:title");
+assert(html.includes('name="twitter:description"'), "twitter:description");
+assert(!/name=["']keywords["']/i.test(html), "no meta keywords");
+const ldMatch = html.match(/<script type="application\/ld\+json" id="seo-jsonld">([\s\S]*?)<\/script>/);
+assert(ldMatch, "index.html JSON-LD script");
+assert(JSON.stringify(JSON.parse(ldMatch[1])) === JSON.stringify(structuredData("/")), "index.html JSON-LD drifted");
+
+const robots = readFileSync(path.join(root, "public/robots.txt"), "utf8");
+assert(/User-agent:\s*\*/.test(robots), "robots allows all agents");
+assert(/Allow:\s*\//.test(robots), "robots allow all");
+assert(robots.includes("Sitemap: https://www.aulivpurifiers.in/sitemap.xml"), "robots sitemap line");
+assert(!/disallow:\s*\//i.test(robots), "robots should not disallow the site");
+
+const sitemap = readFileSync(path.join(root, "public/sitemap.xml"), "utf8");
+for (const loc of [
+  "https://www.aulivpurifiers.in/",
+  "https://www.aulivpurifiers.in/residential",
+  "https://www.aulivpurifiers.in/commercial",
+]) {
+  assert(sitemap.includes(`<loc>${loc}</loc>`), `sitemap missing ${loc}`);
+}
+assert(sitemap.match(/<loc>/g).length === 3, "sitemap should list only the three routes");
+
+const areas = readFileSync(path.join(root, "src/components/ServiceAreas.tsx"), "utf8");
+assert(areas.includes("Service areas"), "service areas heading");
+assert(areas.includes("seo.cities.map"), "service areas should list the shared cities");
+assert(areas.includes("install purifiers at your doorstep"), "service areas installation line");
+assert(areas.includes("AMC visits"), "service areas AMC line");
+assert(!areas.includes("href="), "service areas should not link to doorway city pages");
+
+const faqUi = readFileSync(path.join(root, "src/components/Faq.tsx"), "utf8");
+assert(faqUi.includes("{item.question}") && faqUi.includes("{item.answer}"), "FAQ should render the shared Q&A");
+assert(faqUi.includes("<h2") && !faqUi.includes("<h1"), "FAQ heading level");
+
+assert(app.includes("<DocumentHead") && app.includes("<ServiceAreas") && app.includes("<Faq"), "home wires SEO, areas, and FAQ");
+assert(cardSource.includes("water purifier"), "product images need descriptive alt text");
+
+const h1Files = walk(path.join(root, "src"))
+  .filter((file) => file.endsWith(".tsx"))
+  .map((file) => [path.relative(root, file), (readFileSync(file, "utf8").match(/<h1\b|<m\.h1\b/g) || []).length])
+  .filter(([, count]) => count > 0);
+const h1ByFile = Object.fromEntries(h1Files);
+assert(h1Files.length === 2, `expected H1 only in Hero and CatalogPage, found ${JSON.stringify(h1Files)}`);
+assert(h1ByFile["src/components/Hero.tsx"] === 1, "home hero should have one H1");
+assert(h1ByFile["src/components/CatalogPage.tsx"] === 1, "catalog page should have one H1");
+
+const viteConfig = readFileSync(path.join(root, "vite.config.ts"), "utf8");
+assert(!viteConfig.includes("publicDir"), "default public dir should copy robots.txt and sitemap.xml");
+
+if (existsSync(path.join(root, "dist"))) {
+  for (const name of ["robots.txt", "sitemap.xml"]) {
+    assert(existsSync(path.join(root, "dist", name)), `dist/${name} missing`);
+    assert(
+      readFileSync(path.join(root, "dist", name), "utf8") === readFileSync(path.join(root, "public", name), "utf8"),
+      `dist/${name} does not match public/${name}`,
+    );
+  }
+}
+
 if (failed) {
   process.exit(1);
 }
 
-console.log("Catalog, contact, and no-commerce checks passed.");
+console.log("Catalog, contact, SEO, and no-commerce checks passed.");
